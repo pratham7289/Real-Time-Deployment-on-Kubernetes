@@ -1,0 +1,33 @@
+# Define the kind of Kubernetes resource (Service)
+kind: Service
+
+# Specify the API version for the Kubernetes resource
+apiVersion: v1
+
+# Metadata section contains information about the service
+metadata:
+  # Name of the service
+  name: pratham
+  
+  # Labels to apply to the service
+  labels:
+    app: pratham
+
+# Spec section defines the desired state of the service
+spec:
+  # Ports section defines the ports that the service should expose
+  ports:
+    # Port 1
+    - port: 8080
+      # Port on the pods to forward traffic to
+      targetPort: 80
+      # Node port to expose the service on (for external access)
+      nodePort: 31200
+
+  # Selector section specifies which pods the service should target
+  selector:
+    # Pods with the 'app' label set to 'pratham' will be targeted by this service
+    app: pratham
+
+  # Type of service (LoadBalancer in this case)
+  type: LoadBalancer

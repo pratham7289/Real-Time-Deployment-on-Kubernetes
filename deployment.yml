@@ -1,0 +1,47 @@
+# Define the kind of Kubernetes resource (Deployment)
+kind: Deployment
+
+# Specify the API version for the Kubernetes resource
+apiVersion: apps/v1
+
+# Metadata section contains information about the resource
+metadata:
+  # Name of the deployment
+  name: pratham
+
+# Spec section defines the desired state of the deployment
+spec:
+  # Number of desired replicas for the deployment
+  replicas: 2
+
+  # Selector section specifies how the deployment selects which pods to manage
+  selector:
+    matchLabels:
+      # Pods managed by this deployment should have the 'app' label set to 'pratham'
+      app: pratham
+
+  # Template section describes the pods that will be created
+  template:
+    metadata:
+      # Labels to apply to the pods created by this template
+      labels:
+        app: pratham
+
+    # Spec section within the template defines the pod specifications
+    spec:
+      # Containers section specifies the containers within the pod
+      containers:
+        # Container 1
+        - name: pratham
+          # Docker image to be used for the container
+          image: pratham7289/pipeline
+          
+          # Image pull policy specifies when to pull the container image ('Always' in this case)
+          imagePullPolicy: Always
+
+          # Ports section defines the ports that should be opened in the container
+          ports:
+            # Port 1
+            - containerPort: 80
+            # Port 2
+            - containerPort: 22

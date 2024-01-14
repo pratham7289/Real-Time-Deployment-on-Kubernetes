@@ -1,0 +1,16 @@
+# Define the hosts on which the tasks will be executed
+- hosts: all
+
+  # Indicate that privilege escalation is required (become root)
+  become: true
+
+  # List of tasks to be executed on the specified hosts
+  tasks:
+
+    # Task 1: Create a new deployment using kubectl
+    - name: Create New Deployment
+      command: kubectl apply -f /home/ubuntu/Deployment.yml
+
+    # Task 2: Create a new service using kubectl
+    - name: Create New Service
+      command: kubectl apply -f /home/ubuntu/Service.yml
